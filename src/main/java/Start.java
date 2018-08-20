@@ -15,8 +15,8 @@ public class Start {
 		
 		ReadAndProcessCSVFile testInstance = new ReadAndProcessCSVFile();
 		
-		File file = new File("ALF24.csv");
-		File file2 = new File("ALF24.CONV.sorted.csv");
+		File file = new File("GAF24.csv");
+		File file2 = new File("GALICF24.CONV.sorted.csv");
 		
 		long startTime = System.currentTimeMillis();
 			allF00 = testInstance.parseExcelCSV(file);
