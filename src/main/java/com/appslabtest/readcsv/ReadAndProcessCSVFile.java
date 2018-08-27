@@ -237,7 +237,21 @@ public class ReadAndProcessCSVFile {
 					record.get(15).trim();
 		}
 		
+		if(currentFile.getName().contains("ALF02") || currentFile.getName().contains("GAF02")) {
+			rowValues = record.get(0) + record.get(1).trim() + record.get(8).trim() + record.get(14).trim() + record.get(15).trim();
+		}
 		
+		if(currentFile.getName().contains("GAF08") || currentFile.getName().contains("ALF08")) {
+			rowValues = record.get(0) + record.get(1).trim() + record.get(6).trim() + record.get(7).trim();
+		}
+		
+		if(currentFile.getName().contains("GAF09") || currentFile.getName().contains("ALF09")) {
+			rowValues = record.get(0) + record.get(1).trim() + record.get(8).trim() + record.get(9).trim();
+		}
+		
+		if(currentFile.getName().contains("ALF24") || currentFile.getName().contains("GAF24")) {
+			rowValues = record.get(0) + record.get(1).trim() + record.get(5).trim() + record.get(6).trim() + record.get(7).trim();
+		}
 		
 		return rowValues;
 	}

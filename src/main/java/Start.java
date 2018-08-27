@@ -18,6 +18,8 @@ public class Start {
 		File file = new File("GAF24.csv");
 		File file2 = new File("GALICF24.CONV.sorted.csv");
 		
+		testInstance.setCurrentFile(file);
+		
 		long startTime = System.currentTimeMillis();
 			allF00 = testInstance.parseExcelCSV(file);
 			allF00.remove(0); //Remove the header
