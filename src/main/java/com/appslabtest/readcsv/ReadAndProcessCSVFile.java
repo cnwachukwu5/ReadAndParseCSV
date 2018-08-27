@@ -2,9 +2,7 @@ package com.appslabtest.readcsv;
 
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.Reader;
 import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
@@ -27,7 +25,21 @@ public class ReadAndProcessCSVFile {
 	
 	Hashtable<Integer, String> recordFinder = new Hashtable<Integer, String>(); 
 	
+	private File currentFile;
 	
+	
+	public File getCurrentFile() {
+		return currentFile;
+	}
+
+
+
+	public void setCurrentFile(File currentFile) {
+		this.currentFile = currentFile;
+	}
+
+
+
 	public List<CSVRecord> getEdw_Records() {
 		return edw_Records;
 	}
@@ -218,11 +230,14 @@ public class ReadAndProcessCSVFile {
 		 * @Return rowValues - a String representing concatenation of first and second cell values in the row
 		 */
 		
-		String rowValues = record.get(0) + record.get(1).trim();
+		String rowValues = "";
 		
-		//for(int j = 0; j < record.size(); j++) {
-			//rowValues += record.get(j);
-		//}
+		if(currentFile.getName().contains("ALF00") || currentFile.getName().contains("GAF00")) {
+			rowValues = record.get(0) + record.get(1).trim() + record.get(5).trim() + record.get(13).trim() + record.get(14).trim() + 
+					record.get(15).trim();
+		}
+		
+		
 		
 		return rowValues;
 	}
@@ -426,6 +441,24 @@ public class ReadAndProcessCSVFile {
 					"GUARRATE1","GUARRATE2","GUARRTYR1","GUARRTMO1","GUARRTYR2","GUARRTMO2","ORIGISDD","ORIGISYR","ORIGISMO","ORGCO","ORGPOLNO",
 					"ORGADMIN","ORGPRJPLN","SOP051IND","SOP5CHGYR","SOP5CHGMO"};
 			return ALF00_fileHeader;
+		}
+		
+		if(filename.contains("ALF02")) {
+			Object[] ALF02_fileHeader = {"CO","POLICYNO","RECTYP","ACTYR","ACTMO","PRMCOL1YR","PRMCOLREN","LOADCHRG","INTEREST","VARAPPREC","SIPBCRED",
+					"PBACCR1","ACTDBMONV","NARMONV","FVCURRME","DUALFV","BONUSFUND","DBFLOOR","LMPSUM1YR","LMPSUMREN","MINDB1PREM","MINDB2PREM","MINDBYR",
+					"MINDBMO","MINDB2YR","MINDB2MO","PYMTSAVAIL","MINDBSW","MINDB2SW","ROPACCRUAL","CVCURRME","ACQBONUS","MVACHG","FREEPART"};
+			return ALF02_fileHeader;
+		}
+		
+		if(filename.contains("ALF08")) {
+			Object[] ALF08_fileHeader = {"CO","POLICYNO","RECTYP","ACTYR","ACTMO","WITHTYPE","CASHPAY","FUNDREL","SURCHGREL","MVACHG"};
+			return ALF08_fileHeader;
+		}
+		
+		if(filename.contains("ALF09")) {
+			Object[] ALF09_fileHeader = {"CO","POLICYNO","RECTYP","ACTYR","ACTMO","TERMYR","TERMMO","TERMDAY","CASHPAY","FUNDREL","SURCHGREL","DEATHPAY","TERMTYPE","REINST",
+					"MVACHG"};
+			return ALF09_fileHeader;
 		}
 		
 		if(filename.contains("ALF24")) {
