@@ -28,6 +28,7 @@ public class Start {
 			testInstance.setEdw_Records(allF00);
 			testInstance.setOdw_Records(allF00CONV);
 		long endTime = System.currentTimeMillis();
+		
 		System.out.println("Load time: " + (endTime - startTime) / 1000.0);
 		
 		System.out.println("Completed ...");
